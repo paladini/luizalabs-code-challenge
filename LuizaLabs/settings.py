@@ -37,12 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'allauth',
-    'allauth.account',
-    'rest_auth',
-    'rest_auth.registration'
+    # 'rest_framework',
+    # 'rest_framework.authtoken',
+    # 'allauth',
+    # 'allauth.account',
+    # 'rest_auth',
+    # 'rest_auth.registration'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +81,11 @@ WSGI_APPLICATION = 'LuizaLabs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'LuizaLabs',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'root',
     }
 }
 
