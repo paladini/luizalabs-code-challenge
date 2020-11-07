@@ -1,5 +1,5 @@
-Django==3.1.3
-django-allauth==0.43.0
-django-rest-auth==0.9.5
-djangorestframework==3.12.1
+django
+django-allauth
+django-rest-auth
+djangorestframework
 psycopg2-binary

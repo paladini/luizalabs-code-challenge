@@ -38,6 +38,12 @@ O servidor/aplicação estará disponível na porta 8000 do Localhost, podendo s
 docker-compose run web python manage.py migrate
 ```
 
+**Gerar migrações do Django:**
+
+```
+docker-compose run web python manage.py makemigrations
+```
+
 ## Sobre
 
 Desenvolvido por [Fernando Paladini](https://github.com/paladini) em Novembro de 2020.
