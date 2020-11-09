@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404
 from .models import Client, Product, FavoriteList
 from .serializers import ClientSerializer, ProductSerializer, FavoriteListSerializer
 
-
 class ClientList(viewsets.ModelViewSet):
 
     queryset = Client.objects.all()

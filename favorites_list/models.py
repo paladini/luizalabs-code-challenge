@@ -38,6 +38,3 @@ class FavoriteList(models.Model):
     class Meta:
         db_table = 'favorites_list'
         unique_together = ('client', 'product',)
-    
-    def __str__(self):
-        return self.list_name

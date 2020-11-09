@@ -10,7 +10,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ClientSerializer(serializers.ModelSerializer):
 
-    favorites = ProductSerializer(many=True) 
+    favorites = ProductSerializer(many=True)
 
     class Meta:
 
@@ -26,4 +26,4 @@ class FavoriteListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FavoriteList
-        fields = ('products', 'clients',)
+        fields = ('id', 'products', 'clients',)

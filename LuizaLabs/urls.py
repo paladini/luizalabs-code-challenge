@@ -22,5 +22,4 @@ urlpatterns = [
     url(r'^api/v1/', include('favorites_list.urls')),
     url(r'^api/docs', include_docs_urls(title='LuizaLabs Code Challenge')),
     url(r'^admin/', admin.site.urls),
-    # path('docs/', include_docs_urls(title='LuizaLabs Code Challenge'))
 ]
