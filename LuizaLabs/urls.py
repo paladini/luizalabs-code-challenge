@@ -17,9 +17,15 @@ from django.conf.urls import url,include
 from django.urls import path
 from django.contrib import admin
 from rest_framework.documentation import include_docs_urls
+from rest_framework.authtoken import views
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('favorites_list.urls')),
     url(r'^api/docs', include_docs_urls(title='LuizaLabs Code Challenge')),
-    url(r'^admin/', admin.site.urls),
+    path('api/v1/auth/', include('rest_auth.urls')),
+    path('api/v1/auth/registration/', include('rest_auth.registration.urls')),
+    # url(r'^api/v1/auth/token/', views.obtain_auth_token, name='auth-token'),
+    # path('api/v1/auth/', include('rest_auth.urls')),
+    
 ]
