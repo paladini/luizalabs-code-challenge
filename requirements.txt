@@ -3,3 +3,6 @@ django-allauth
 django-rest-auth
 djangorestframework
 psycopg2-binary
+pygments
+markdown
+coreapi

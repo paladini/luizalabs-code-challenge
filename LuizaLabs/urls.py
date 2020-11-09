@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
+from django.urls import path
 from django.contrib import admin
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
-    url(r'^', include('favorites_list.urls')),
+    url(r'^api/v1/', include('favorites_list.urls')),
+    url(r'^api/docs', include_docs_urls(title='LuizaLabs Code Challenge')),
     url(r'^admin/', admin.site.urls),
+    # path('docs/', include_docs_urls(title='LuizaLabs Code Challenge'))
 ]

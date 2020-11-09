@@ -70,7 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'LuizaLabs.wsgi.application'
-
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

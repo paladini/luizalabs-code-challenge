@@ -27,8 +27,17 @@ Para iniciar a aplicação Django, executar os seguintes comandos:
 docker-compose up
 ```
 
-O servidor/aplicação estará disponível na porta 8000 do Localhost, podendo ser acessado [clicando aqui](127.0.0.1:8000/).
+Após iniciar a aplicação com o docker-compose, note que:
 
+- O servidor/aplicação estará disponível na porta 8000 do Localhost, podendo ser acessado [clicando aqui](127.0.0.1:8000/).
+- A documentação da API está disponível em [http://127.0.0.1:8000/api/docs](http://127.0.0.1:8000/api/docs)
+
+
+**Também existe uma documentação padrão do Django-Rest-Framework disponível em:**
+
+- [API de Products: http://127.0.0.1:8000/api/v1/products/](http://127.0.0.1:8000/api/v1/products/)
+- [API de Clients: http://127.0.0.1:8000/api/v1/clients/](http://127.0.0.1:8000/api/v1/clients/)
+- [API de Favorites List: http://127.0.0.1:8000/api/v1/favorites/](http://127.0.0.1:8000/api/v1/favorites/)
 
 ### X. Comandos Úteis
 
@@ -42,6 +51,24 @@ docker-compose run web python manage.py migrate
 
 ```
 docker-compose run web python manage.py makemigrations
+```
+
+**Atualizar bibliotecas da instância Docker:**
+
+```
+docker-compose run web pip install -r requirements.txt
+```
+
+**Atualizar requirements-lock.txt da instância Docker:**
+
+```
+docker-compose run web pip freeze > requirements-lock.txt && cat requirements-lock.txt
+```
+
+**Recriar instâncias do Docker + Build + Start:**
+
+```
+docker-compose up --build --force-recreate
 ```
 
 ## Sobre

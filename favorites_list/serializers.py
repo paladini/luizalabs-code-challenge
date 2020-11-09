@@ -6,7 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Product
-        fields = ('title', 'brand', 'price', 'image', 'review_score', 'favorited',)
+        fields = ('title', 'brand', 'price', 'image', 'review_score',)
 
 class ClientSerializer(serializers.ModelSerializer):
 
@@ -15,9 +15,7 @@ class ClientSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Client
-        fields = ('name', 'email',)
-        
-
+        fields = ('name', 'email','favorites',)
         
 # class FavoriteListSerializer(serializers.HyperlinkedModelSerializer):
 class FavoriteListSerializer(serializers.ModelSerializer):
@@ -29,4 +27,4 @@ class FavoriteListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FavoriteList
-        fields = ('product', 'client', )
+        fields = ('product', 'client',)
