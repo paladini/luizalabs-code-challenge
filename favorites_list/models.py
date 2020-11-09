@@ -22,7 +22,7 @@ class Product(models.Model):
     image = models.CharField(max_length=2048) # max chars that an URL can have
     brand = models.CharField(max_length=200, db_index=True)
     title = models.CharField(max_length=200, db_index=True)
-    review_score = models.DecimalField(max_length=200, decimal_places=2, max_digits=2)
+    review_score = models.DecimalField(max_length=200, decimal_places=2, max_digits=10)
     
     favorited = models.ManyToManyField('Client', through='FavoriteList')
 
@@ -32,7 +32,6 @@ class Product(models.Model):
     
 class FavoriteList(models.Model):
 
-    list_name = models.CharField(max_length=50)
     client = models.ForeignKey(Client, on_delete = models.CASCADE, related_name="clients")
     product = models.ForeignKey(Product, on_delete = models.CASCADE, related_name="products")
     

@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     url(r'^clients/$', views.ClientList.as_view(), name='client-list'),
     url(r'^products/$', views.ProductList.as_view(), name='product-list'),
+    url(r'^favorites/$', views.FavoriteListViewSet.as_view(), name='favorite-list'),
 ]

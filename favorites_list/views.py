@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
 from rest_framework import generics
-from .models import Client, Product
-from .serializers import ClientSerializer, ProductSerializer
+from rest_framework import viewsets
+from .models import Client, Product, FavoriteList
+from .serializers import ClientSerializer, ProductSerializer, FavoriteListSerializer
 
 class ClientList(generics.ListCreateAPIView):
 
@@ -13,3 +14,8 @@ class ProductList(generics.ListCreateAPIView):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    
+class FavoriteListViewSet(generics.ListCreateAPIView):
+
+    queryset = FavoriteList.objects.all()
+    serializer_class = FavoriteListSerializer
