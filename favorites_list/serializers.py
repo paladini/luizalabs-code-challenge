@@ -20,11 +20,11 @@ class ClientSerializer(serializers.ModelSerializer):
 # class FavoriteListSerializer(serializers.HyperlinkedModelSerializer):
 class FavoriteListSerializer(serializers.ModelSerializer):
 
-    product = serializers.PrimaryKeyRelatedField(
+    products = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all())
-    client = serializers.PrimaryKeyRelatedField(
+    clients = serializers.PrimaryKeyRelatedField(
         queryset=Client.objects.all())
 
     class Meta:
         model = FavoriteList
-        fields = ('product', 'client',)
+        fields = ('products', 'clients',)
