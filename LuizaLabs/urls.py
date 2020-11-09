@@ -25,7 +25,4 @@ urlpatterns = [
     url(r'^api/docs', include_docs_urls(title='LuizaLabs Code Challenge')),
     path('api/v1/auth/', include('rest_auth.urls')),
     path('api/v1/auth/registration/', include('rest_auth.registration.urls')),
-    # url(r'^api/v1/auth/token/', views.obtain_auth_token, name='auth-token'),
-    # path('api/v1/auth/', include('rest_auth.urls')),
-    
 ]

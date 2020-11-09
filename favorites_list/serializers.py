@@ -10,7 +10,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ClientSerializer(serializers.ModelSerializer):
 
-    favorites = ProductSerializer(many=True)
+    favorites = ProductSerializer(many=True, required=False, read_only=True)
 
     class Meta:
 

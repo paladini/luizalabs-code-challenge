@@ -1,6 +1,7 @@
-from django.conf.urls import url
 from . import views
 from rest_framework.routers import DefaultRouter
+from django.conf.urls import url,include
+from django.urls import path
 
 client_list = views.ClientList.as_view({
     'get': 'list', 
@@ -30,11 +31,20 @@ favorite_detail = views.FavoriteListViewSet.as_view({
 })
 
 
+# urlpatterns = [
+#     url(r'^clients/$', client_list, name='client-list'),
+#     url(r'^clients/<int:pk>/', client_detail, name='client-detail'),
+#     url(r'^products/$', product_list, name='product-list'),
+#     url(r'^products/<int:pk>/', product_detail, name='product-detail'),
+#     url(r'^favorites/$', favorites_list, name='favorite-list'),
+#     url(r'^favorites/<int:pk>/', favorite_detail, name='favorite-detail'),
+# ]
+
+router = DefaultRouter()
+router.register(r'clients', views.ClientList)
+router.register(r'products', views.ProductList)
+router.register(r'favorites', views.FavoriteListViewSet)
+
 urlpatterns = [
-    url(r'^clients/$', client_list, name='client-list'),
-    url(r'^clients/<int:id>/', client_detail, name='client-detail'),
-    url(r'^products/$', product_list, name='product-list'),
-    url(r'^products/<int:id>/', product_detail, name='product-detail'),
-    url(r'^favorites/$', favorites_list, name='favorite-list'),
-    url(r'^favorites/<int:id>/', favorite_detail, name='favorite-detail'),
+    path('', include(router.urls)),
 ]
