@@ -18,7 +18,7 @@ class ProductList(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     
-class FavoriteListViewSet(generics.ListCreateAPIView):
+class FavoriteListViewSet(viewsets.ModelViewSet):
 
     queryset = FavoriteList.objects.all()
     serializer_class = FavoriteListSerializer
