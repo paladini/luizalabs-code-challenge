@@ -10,17 +10,10 @@ from .serializers import ClientSerializer, ProductSerializer, FavoriteListSerial
 
 class ClientList(viewsets.ModelViewSet):
 
-    # queryset = Client.objects.all()
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     
-    # def retrieve(self, request, pk=None):
-    #     queryset = Client.objects.all()
-    #     client = get_object_or_404(queryset, pk=pk)
-    #     serializer = ClientSerializer(client)
-    #     return Response(serializer.data)
-    
-class ProductList(generics.ListCreateAPIView):
+class ProductList(viewsets.ModelViewSet):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
