@@ -72,6 +72,32 @@ docker-compose run web python manage.py migrate
 docker-compose run web python manage.py makemigrations
 ```
 
+**Resetar migrações do Django (Opção 1):**
+
+```
+docker-compose run web python manage.py migrate --fake web zero
+```
+
+**Resetar migrações do Django (Opção 2):**
+
+Caso não seja possível executar o comando acima, conecte no seu banco de dados PostgreSQL e execute a seguinte query:
+
+```
+DROP SCHEMA public CASCADE;
+
+CREATE SCHEMA public;
+
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO public;
+```
+
+Após isso, gere e execute as migrações do Django:
+
+```
+docker-compose run web python manage.py makemigrations
+docker-compose run web python manage.py migrate
+```
+
 **Atualizar bibliotecas da instância Docker:**
 
 ```

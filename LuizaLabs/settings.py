@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
     'django.contrib.sites',
+    'rest_framework_nested'
 ]
 SITE_ID = 1
 
@@ -84,6 +85,11 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
+}
+
+JWT_AUTH = {
+    # Authorization:Token xxx
+    'JWT_AUTH_HEADER_PREFIX': 'Token',
 }
 
 # API Users

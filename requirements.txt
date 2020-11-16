@@ -6,3 +6,4 @@ psycopg2-binary
 pygments
 markdown
 coreapi
+drf-nested-routers
