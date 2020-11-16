@@ -92,6 +92,10 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Token',
 }
 
+FIXTURE_DIRS = (
+   'favorites_list/fixtures/',
+)
+
 # API Users
 # ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_USERNAME_REQUIRED = False

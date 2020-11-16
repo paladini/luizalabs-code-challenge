@@ -21,7 +21,9 @@ Premissas e decisões de projeto explicadas abaixo:
 - [Melhoria Planejada] Os serializadores estão retornando o `id` dos registros, para possibilidade de consulta GET em `endpoint/:id`. O correto seria não disponibilizar esse tipo de informação na API ou atualizar o código para apenas funcionar com alguma função hash para a chave primária das tabelas, ao invés de ID numérico. Entretanto, como esse é apenas um desafio rápido e a API está protegida por autenticação básica, não acreditei que havia necessidade de implementar neste momento. Essa seria uma melhoria futura sugerida.
 - [Melhoria Planejada] A API poderia realizar consulta de registros específicos (`GET endpoint/:pk`) para outros campos, permitindo por exemplo consulta por e-mail ou marca do produto.
 - [Melhoria Planejada] Os logs e metrificação poderiam ser melhorados/configurados/integrados com serviços de APM como NewRelic. Configurações para pipeline de deploy também poderiam ser realizados em um serviço como Jenkins. Por fim, em uma arquitetura de microserviços seria necessário o lançamento/leitura de eventos para comunicação via mensageria (utilizando RabbitMQ, por exemplo). Além disso, os eventos também forneceriam dados importantes para inteligência de mercado, equipe de Data Science e afins, podendo compilar dashboards e fazer análises interessantes das modificações do estado dos modelos/sistema.
-
+- [Melhoria Planejada] Desenvolver testes unitários e de integração, além de registrar os modelos no Admin do Django para acesso/gerenciamento.
+- [Melhoria Planejada] Melhoria nos endpoints de produtos favoritos, de acordo com as especificações/demandas do projeto.
+- [Melhoria Planejada] Sistema de load de dados iniciais (*populate*) melhorado/padronizado.
   
 
 ## Guias
@@ -45,7 +47,6 @@ Após iniciar a aplicação com o docker-compose, note que:
 
 - [API de Products: http://127.0.0.1:8000/api/v1/products/](http://127.0.0.1:8000/api/v1/products/)
 - [API de Clients: http://127.0.0.1:8000/api/v1/clients/](http://127.0.0.1:8000/api/v1/clients/)
-- [API de Favorites List: http://127.0.0.1:8000/api/v1/favorites/](http://127.0.0.1:8000/api/v1/favorites/)
 
 
 ### 2. Como Utilizar a API
@@ -56,6 +57,7 @@ Caso precise realizar login para um usuário de API já registrado (ou seja, um 
 
 Após configurar o header `Authorization` para as demais chamadas da API, poderão ser utilizadas as APIs de Products, Clients e Favorites List.
 
+Após isso, cadastrar produtos e clientes através da API em questão, utilizando o Token de autorização fornecido previamente. Por fim, pode-se utilizar a API de associação de produtos com listas de favoritos (`GET /api/v1/clients/{id}/favorites/{product_id}/`) e remoção de produtos já associados com listas de usuários (`GET /api/v1/clients/{id}/favorites/{product_id}/remove`).
 
 
 ### X. Comandos Úteis
@@ -96,6 +98,18 @@ Após isso, gere e execute as migrações do Django:
 ```
 docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
+```
+
+**Exportar dados previamente registrados no banco PostgreSQL:**
+
+```
+docker-compose run web python manage.py dumpdata --format=json favorites_list > favorites_list/fixtures/initial_data.json
+```
+
+**Sync do banco de dados:**
+
+```
+docker-compose run web python manage.py migrate --run-syncdb
 ```
 
 **Atualizar bibliotecas da instância Docker:**
